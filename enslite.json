@@ -1,0 +1,9 @@
+{
+  "name": "enslite",
+  "description": "Resolve ENS domains in a browser",
+  "path": "$GOPATH/go/bin/resolver",
+  "type": "stdio",
+  "allowed_origins": [
+    "chrome-extension://acgpeaeghjndpaiopbfadlhemcocbcpc/"
+  ]
+}

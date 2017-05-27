@@ -1,0 +1,25 @@
+{
+  "name": "ENS",
+  "version": "1.0",
+  "manifest_version": 2,
+  "description": "Resolve .eth domains using an ethereum lite client",
+  "icons": {
+    "128": "ens.png"
+  },
+  "web_accessible_resources": [
+   "sync.html"
+  ],
+  "permissions": [
+    "tabs",
+    "nativeMessaging",
+    "webRequest", 
+    "webRequestBlocking", 
+    "<all_urls>",
+    "http://localhost:31313/",
+    "proxy", 
+    "*://*/*"
+  ],
+  "background": {
+    "scripts": ["background.js"]
+  }
+}
