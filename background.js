@@ -9,7 +9,7 @@ chrome.windows.onRemoved.addListener(function(windowId){
 
 function sleep(milliseconds, bithost) {
 	// synchronous XMLHttpRequests from Chrome extensions are not blocking event handlers. That's why we use this
-	// pretty little sleep function to try to get the IP of a .bit domain before the request times out.
+	// pretty little sleep function to try to get the IP of a .eth domain before the request times out.
 	var start = new Date().getTime();
 	for (var i = 0; i < 1e7; i++) {
 		if (((new Date().getTime() - start) > milliseconds) || (sessionStorage.getItem(bithost) != null)){
@@ -24,7 +24,7 @@ chrome.webRequest.onBeforeRequest.addListener(function (details) {
 	var parser = document.createElement('a');
 	parser.href = details.url;
 	
-	// Make sure the domain ends with .bit.
+	// Make sure the domain ends with .eth.
 	var tld = parser.hostname.slice(-3);
 	if (tld != 'eth') {
 		return;
@@ -44,18 +44,18 @@ chrome.webRequest.onBeforeRequest.addListener(function (details) {
 		if (xhr.readyState == 4) {
 			// Get the ip address returned from the DNS proxy server.
 			var bitip = xhr.responseText;
-			// store the IP for .bit hostname in the local cache which is reset on each browser restart
+			// store the IP for .eth hostname in the local cache which is reset on each browser restart
 			sessionStorage.setItem(bithost, bitip);
 		}
 	}
 	xhr.send();
 	// block the request until the new proxy settings are set. Block for up to two seconds.
 	sleep(2000, bithost);
-    // 503 means were syncing with the ethereum network. Show loading screen.
-    if (xhr.status == 503) {
-        transferUrl = details.url;
-        return {redirectUrl: chrome.extension.getURL("sync.html")};
-    }
+        // 503 means were syncing with the ethereum network. Show loading screen.
+        if (xhr.status == 503) {
+            transferUrl = details.url;
+            return {redirectUrl: chrome.extension.getURL("sync.html")};
+        }
 	
 	// Get the IP from the session storage.
 	var bitip = sessionStorage.getItem(bithost);
