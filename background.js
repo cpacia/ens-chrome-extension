@@ -1,3 +1,4 @@
+// Based off github.com/Tagide/chrome-bit-domain-extension
 chrome.runtime.connectNative("enslite");
 var transferUrl = "";
 
