@@ -28,6 +28,12 @@ mkdir -p "$TARGET_DIR"
 # Copy native messaging host manifest.
 cp "$DIR/$HOST_NAME.json" "$TARGET_DIR"
 
+# Update host path in the manifest.
+HOST_PATH=$GOPATH/bin/resolver
+TO_REPLACE="replace_me"
+
+sed -i -e "s+$TO_REPLACE+$HOST_PATH+" "$TARGET_DIR/$HOST_NAME.json"
+
 # Set permissions for the manifest so that all users can read it.
 chmod o+r "$TARGET_DIR/$HOST_NAME.json"
 
