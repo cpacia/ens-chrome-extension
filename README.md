@@ -6,7 +6,7 @@ Resolve .eth domains in chrome using an ethereum lite client
 ### Install
 
 Unfortunately we can't install this extension directly from the Chrome store since it also requires the [ens-lite](https://github.com/cpacia/ens-lite)
-binary in be installed as well. We can, however, create installers for each OS that will unpack everything and install the extension but they
+binary to be installed as well. We can, however, create installers for each OS that will unpack everything and install the extension but they
 don't exist as of yet. So for now it's manual install.
 
 - Install Go. Here I'll link to [docs](https://github.com/OpenBazaar/openbazaar-go/tree/master/docs) I wrote for OpenBazaar on how to install on each OS.
