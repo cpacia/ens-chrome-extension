@@ -1,9 +1,10 @@
+// Based off github.com/Tagide/chrome-bit-domain-extension
 chrome.runtime.connectNative("enslite");
 var transferUrl = "";
 
 chrome.windows.onRemoved.addListener(function(windowId){
     var xhr = new XMLHttpRequest();
-    xhr.open("POST", "http://localhost:31313/resolver/", false);
+    xhr.open("POST", "http://localhost:31313/resolver/dns/", false);
     xhr.send();
 });
 

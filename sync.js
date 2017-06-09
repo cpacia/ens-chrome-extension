@@ -5,8 +5,8 @@ ws.onmessage = function (evt) {
         document.getElementById("syncProgress").value = evt.data;
     } else if (evt.data == "Fully synced") {
         chrome.tabs.getCurrent(function (tab) {
-			chrome.tabs.update(tab.id, {url: background.transferUrl});
-            ws.close()
-		});
+		chrome.tabs.update(tab.id, {url: background.transferUrl});
+            	ws.close()
+	});
     }
 };
